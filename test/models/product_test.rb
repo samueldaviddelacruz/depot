@@ -34,4 +34,9 @@ class ProductTest < ActiveSupport::TestCase
       assert new_product(name).invalid?, "#{name} must be invalid" # assert product is not valid
     end
   end
+  test "product is not valid without a unique title" do
+    product = Product.new(title: products(:ruby).title, description: "yyy", price: 1, image_url: "fred.gif") # create product with same title as fixture
+    assert product.invalid? # assert product is not valid
+    assert_equal ["has already been taken"], product.errors[:title] # assert product has an error on :title
+  end
 end
