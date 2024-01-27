@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   include CurrentCart
-  before_action :set_order, only: %i[ new create ]
+  before_action :set_cart, only: %i[ new create ]
   before_action :ensure_cart_isnt_empty, only: %i[ new ]
   before_action :set_order, only: %i[ show edit update destroy ]
 
@@ -25,10 +25,12 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-
+    @order.add_line_items_from_cart(@cart) # Add the line items from the cart to the order  
     respond_to do |format|
       if @order.save
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
+        Cart.destroy(session[:cart_id]) # Destroy the cart
+        session[:cart_id] = nil # Set the session cart id to nil
+        format.html { redirect_to store_index_url, notice: "Thank you for your order." }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
