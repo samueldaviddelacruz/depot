@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id]) # Destroy the cart
         session[:cart_id] = nil # Set the session cart id to nil
+        OrderMailer.received(@order).deliver_later # Send the order confirmation email
         format.html { redirect_to store_index_url, notice: "Thank you for your order." }
         format.json { render :show, status: :created, location: @order }
       else
