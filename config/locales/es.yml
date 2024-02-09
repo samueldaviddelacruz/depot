@@ -1,0 +1,13 @@
+es:
+  layouts:
+    application:
+      title: "Biblioteca Pragmática"
+      home: "Inicio"
+      questions: "Preguntas"
+      news: "Noticias"
+      contact: "Contacto"
+  store:
+    index:
+      title_html: "Su catálogo pragmático"
+    product:
+      add_html: "Añadir al carrito"
