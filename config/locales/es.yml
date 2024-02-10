@@ -1,4 +1,23 @@
 es:
+  activerecord:
+    errors:
+      messages:
+        inclusion: "no está incluido en la lista"
+        blank: "no puede estar en blanco"
+    models:
+      order: "pedido"
+    attributes:
+      order:
+        name: "Nombre"
+        address: "Dirección"
+        email: "E-mail"
+        pay_type: "Pagar con"
+  errors:
+    template:
+      body: "Hubo problemas con los siguientes campos:"
+      header:
+        one: "1 error impidió que este %{model} fuera guardado"
+        other: "%{count} errores impidieron que este %{model} fuera guardado"
   layouts:
     application:
       title: "Biblioteca Pragmática"
@@ -11,3 +30,42 @@ es:
       title_html: "Su catálogo pragmático"
     product:
       add_html: "Añadir al carrito"
+  carts:
+    cart:
+      title: "Carrito de compras"
+      empty: "Vaciar carrito"
+      checkout: "Pagar"
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%n&nbsp;%u"
+        precision: 2
+        separator: ","
+        unit: "$US"
+  orders:
+    new:
+      legend:       "Por favor, introduzca sus datos"
+    form:
+      name:         "Nombre"
+      address_html: "Dirección"
+      email:        "E-mail"
+      pay_type:     "Pagar con"
+      pay_prompt_html: "Seleccione un método de pago"
+      submit:       "Realizar pedido"
+      payment_type: "Tipo de pago"
+      pay_types:
+        "Check":           "Cheque"
+        "Credit card":     "Tarjeta de crédito"
+        "Purchase order":  "Orden de compra"
+    check:
+      routing_number: "Ruta #"
+      account_number: "Cuenta #"
+    cc:
+      cc_number: "CC #"
+      expiration_date: "Expiración"
+    po:
+      po_number: "Orden de compra #"
+
+
+  thanks:          "Gracias por su pedido"
