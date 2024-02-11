@@ -6,14 +6,13 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
   resources :products
-  
+  resources :users
   scope '(:locale)' do
-    resources :users
     resources :orders
     resources :line_items
     resources :carts
     # Defines the root path route ("/")
-    root 'store#index', as: 'store_index'
+    root 'store#index', as: 'store_index', via: :all
   end  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
