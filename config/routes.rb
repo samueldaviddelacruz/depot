@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :products
   resources :users
+  resources :support_requests, only: %i[ index update ]
   scope '(:locale)' do
     resources :orders
     resources :line_items
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     # Defines the root path route ("/")
     root 'store#index', as: 'store_index', via: :all
   end  
+ 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
